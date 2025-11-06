@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../config/database.php'; // file koneksi PDO
+require_once '../config/database.php'; // 
 
 // proses login
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -24,6 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,11 +32,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
+
 <body class="login-body">
     <div class="login-container">
         <div class="login-box">
             <h2 class="login-title">Healventory</h2>
-            <p class="login-subtitle"><i class="bi bi-person"></i> login to your account</p>
+            <p class="login-subtitle"><i class="bi bi-person"></i> Masuk Ke Akun Anda</p>
 
             <?php if (!empty($error)): ?>
                 <div class="error-message"><?= htmlspecialchars($error) ?></div>
@@ -50,4 +52,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </div>
 </body>
+
 </html>
