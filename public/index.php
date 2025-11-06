@@ -8,17 +8,21 @@ if (!isset($_SESSION['user_role'])) {
 
 switch ($_SESSION['user_role']) {
     case 'admin':
-        header("Location: dashboard_admin.php");
+        header("Location: admin/dashboard.php");
         break;
+
     case 'manager':
-        header("Location: dashboard_manager.php");
+        header("Location: manajer/dashboard.php");
         break;
+
     case 'staff':
-        header("Location: dashboard_staff.php");
+        header("Location: staff/dashboard.php");
         break;
+
     default:
         session_destroy();
         header("Location: login.php");
         break;
 }
+
 exit;

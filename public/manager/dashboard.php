@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'staff') {
+if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'manager') {
     header("Location: login.php");
     exit;
 }
@@ -9,7 +9,6 @@ $total_obat = 940;
 $obat_masuk = 50;
 $obat_keluar = 45;
 $obat_menipis = 3;
-
 include '../includes/header.php';
 ?>
 
@@ -18,7 +17,7 @@ include '../includes/header.php';
         <h2 class="logo">Healventory</h2>
         <ul class="menu">
             <li class="active"><i class="bi bi-house-fill"></i> Dashboard</li>
-            <li><i class="bi bi-arrow-left-right"></i> Transaksi</li>
+            <li><i class="bi bi-file-earmark-text"></i> Laporan</li>
             <li><i class="bi bi-activity"></i> Monitoring</li>
             <li id="btnLogout"><i class="bi bi-box-arrow-left"></i> Logout</li>
         </ul>
@@ -26,7 +25,7 @@ include '../includes/header.php';
 
     <main class="main-content">
         <header class="header">
-            <span class="role">Staff</span>
+            <span class="role">Manajer</span>
             <i class="bi bi-person-circle profile-icon"></i>
         </header>
 

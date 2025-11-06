@@ -10,7 +10,7 @@ $obat_masuk = 50;
 $obat_keluar = 45;
 $obat_menipis = 3;
 
-include 'includes/header.php';
+include '../includes/header.php';
 ?>
 
 <div class="container">
