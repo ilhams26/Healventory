@@ -53,10 +53,14 @@ include '../includes/header.php';
         </section>
 
         <section class="dashboard-content">
+            <!-- <canvas id="stokChart"></canvas> -->
+             <!-- Chart Besar -->
             <div class="chart">
                 <h4></h4>
                 <img src="../assets/img/grafik.png" alt="Grafik Transaksi">
             </div>
+            <!-- Panel Kanan -->
+             <div></div>
             <div class="notif">
                 <h4>Notifikasi</h4>
                 <ul>
