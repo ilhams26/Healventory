@@ -12,7 +12,7 @@ switch ($_SESSION['user_role']) {
         break;
 
     case 'manager':
-        header("Location: manajer/dashboard.php");
+        header("Location: manager/dashboard.php");
         break;
 
     case 'staff':
