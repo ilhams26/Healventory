@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Healventory</title>
+    <title>Login Healventory</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
@@ -46,9 +46,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <form method="POST" action="">
                 <input type="text" name="username" placeholder="Username" required>
                 <input type="password" name="password" placeholder="Password" required>
-                <button type="submit" class="btn-login">Login</button>
+                <button type="submit" class="btn-login">Masuk</button>
             </form>
-            <a href="#" class="forgot-password">Forgot Password ?</a>
+            <a href="#" class="forgot-password">Lupa Sandi ?</a>
         </div>
     </div>
 </body>
