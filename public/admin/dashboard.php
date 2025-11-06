@@ -54,8 +54,8 @@ include '../includes/header.php';
 
         <section class="dashboard-content">
             <div class="chart">
-                <h4>Grafik Transaksi</h4>
-                <img src="assets/img/chart-placeholder.png" alt="Grafik Transaksi">
+                <h4></h4>
+                <img src="../assets/img/grafik.png" alt="Grafik Transaksi">
             </div>
             <div class="notif">
                 <h4>Notifikasi</h4>

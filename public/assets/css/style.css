@@ -1,18 +1,18 @@
 :root {
-  --primary: #0D47A1;
-  --primary-hover: #094DAB;
-  --sidebar-bg: #64BAFF;
-  --background: #BBDEFB;
+  --primary: #0d47a1;
+  --primary-hover: #094dab;
+  --sidebar-bg: #64baff;
+  --background: #bbdefb;
   --text: #000000;
-  --white: #FFFFFF;
-  --gray-border: #D9D9D9;
+  --white: #ffffff;
+  --gray-border: #d9d9d9;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, sans-serif;
+  font-family: "Segoe UI", Tahoma, sans-serif;
 }
 
 body {
@@ -24,20 +24,22 @@ body {
   min-height: 100vh;
 }
 
- /* SIDEBAR  */
+/* SIDEBAR  */
 .sidebar {
-  width: 240px;
+  width: 230px;
   background: var(--sidebar-bg);
   color: var(--white);
-  padding: 20px;
+  padding: 8px;
   display: flex;
   flex-direction: column;
 }
 
 .sidebar .logo {
-  font-size: 22px;
+  font-size: 26px;
   font-weight: bold;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
+  margin-top: 15px;
+  text-align: center;
 }
 
 .sidebar .menu {
@@ -48,10 +50,10 @@ body {
   padding: 12px 10px;
   display: flex;
   align-items: center;
-  gap: 10px;
-  border-radius: 6px;
+  gap: 12px;
   cursor: pointer;
   transition: 0.3s;
+  border-radius: 5px;
 }
 
 .sidebar .menu li:hover,
@@ -59,7 +61,7 @@ body {
   background: var(--primary);
 }
 
-/* MAIN CONTENT */
+/* MAIN */
 .main-content {
   flex: 1;
   padding: 20px;
@@ -71,16 +73,18 @@ body {
   align-items: center;
   font-size: 18px;
   margin-bottom: 20px;
+  color: var(--primary-hover);
 }
 
 .profile-icon {
   font-size: 28px;
-  margin-left: 10px;
+  margin-left: 15px;
+  margin-right: 10px;
 }
 
 .cards {
   display: flex;
-  gap: 15px;
+  gap: 12px;
   margin-bottom: 20px;
 }
 
@@ -103,20 +107,43 @@ body {
   color: var(--text);
 }
 
-/* Dashboard content */
+/* Dashboard*/
 .dashboard-content {
   display: flex;
-  gap: 20px;
+  gap: 12px;
   margin-bottom: 20px;
+  align-items: flex-start;
 }
 
-.chart,
+.chart {
+  background: var(--white);
+  flex: 1;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  min-height: 350px;
+}
+.chart img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  justify-items: center;
+  min-height: 350px;
+}
+
 .notif {
   background: var(--white);
   flex: 1;
   padding: 15px;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  min-height: calc(350px / 2);
+}
+
+.notif h4 {
+  list-style: none;
+  text-align: center;
+  margin-bottom: 25px;
 }
 
 .notif ul {
