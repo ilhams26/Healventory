@@ -21,36 +21,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = "Username atau Password salah.";
     }
 }
+include 'includes/header.php';
 ?>
-<!DOCTYPE html>
-<html lang="id">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Healventory</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-</head>
+<div class="login-container">
+    <div class="login-box">
+        <h2 class="login-title">Healventory</h2>
+        <p class="login-subtitle"><i class="bi bi-person"></i> Masuk Ke Akun Anda</p>
 
-<body class="login-body">
-    <div class="login-container">
-        <div class="login-box">
-            <h2 class="login-title">Healventory</h2>
-            <p class="login-subtitle"><i class="bi bi-person"></i> Masuk Ke Akun Anda</p>
+        <?php if (!empty($error)): ?>
+            <div class="error-message"><?= htmlspecialchars($error) ?></div>
+        <?php endif; ?>
 
-            <?php if (!empty($error)): ?>
-                <div class="error-message"><?= htmlspecialchars($error) ?></div>
-            <?php endif; ?>
-
-            <form method="POST" action="">
-                <input type="text" name="username" placeholder="Username" required>
-                <input type="password" name="password" placeholder="Password" required>
-                <button type="submit" class="btn-login">Masuk</button>
-            </form>
-            <a href="#" class="forgot-password">Lupa Sandi ?</a>
-        </div>
+        <form method="POST" action="">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit" class="btn-login">Masuk</button>
+        </form>
+        <a href="#" class="forgot-password">Lupa Sandi ?</a>
     </div>
-</body>
+</div>
 
-</html>
+<?php include 'includes/footer.php'; ?>
