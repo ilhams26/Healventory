@@ -29,8 +29,71 @@ include '../includes/header.php';
             <span class="role">Staff</span>
             <i class="bi bi-person-circle profile-icon"></i>
         </header>
+        <section class="cards">
+            <div class="card"><i class="bi bi-capsule"></i>
+                <p>Jumlah Obat</p>
+                <h3><?= $total_obat ?></h3>
+            </div>
+            <div class="card"><i class="bi bi-check-circle"></i>
+                <p>Obat Masuk</p>
+                <h3><?= $obat_masuk ?></h3>
+            </div>
+            <div class="card"><i class="bi bi-arrow-up"></i>
+                <p>Obat Keluar</p>
+                <h3><?= $obat_keluar ?></h3>
+            </div>
+            <div class="card"><i class="bi bi-exclamation-triangle"></i>
+                <p>Obat Menipis</p>
+                <h3><?= $obat_menipis ?></h3>
+            </div>
+        </section>
 
-        <?php include 'includes/dashboard_content.php'; ?>
+        <section class="dashboard-content">
+            <!-- <canvas id="stokChart"></canvas> -->
+            <!-- Chart Besar -->
+            <div class="chart">
+                <h4></h4>
+                <img src="../assets/img/grafik.png" alt="Grafik Transaksi">
+            </div>
+            <!-- Panel Kanan -->
+            <div></div>
+            <div class="notif">
+                <h4>Notifikasi</h4>
+                <ul>
+                    <li>Paracetamol (20)</li>
+                    <li>Amoxicillin (2 bulan)</li>
+                    <li>Vitamin C (25)</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="table-section">
+            <h4>Transaksi Terakhir</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tanggal</th>
+                        <th>Nama Obat</th>
+                        <th>Jenis</th>
+                        <th>Jumlah</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2024-04-12</td>
+                        <td>Paracetamol</td>
+                        <td>Masuk</td>
+                        <td>50</td>
+                    </tr>
+                    <tr>
+                        <td>2024-04-12</td>
+                        <td>Paracetamol</td>
+                        <td>Keluar</td>
+                        <td>50</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
     </main>
 </div>
 <div class="logout-modal" id="logoutModal">
