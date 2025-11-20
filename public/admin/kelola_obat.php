@@ -115,4 +115,4 @@ $obat = $pdo->query("SELECT * FROM obat ORDER BY id DESC");
 </div>
 
 <script src="../assets/js/kelola_obat.js"></script>
-<?php include '../includes/footer_notif.php'; ?>
+<?php include '../includes/footer.php'; ?>
