@@ -124,7 +124,7 @@ $notif = $pdo->query("SELECT pesan FROM notifikasi ORDER BY tanggal DESC LIMIT 5
 <!-- Popup Notifikasi -->
 <div id="popupContainer"></div>
 
-<?php include '../includes/footer_notif.php'; ?>
+<?php include '../includes/footer.php'; ?>
 
 <script>
 // --- Navigasi Sidebar ---
