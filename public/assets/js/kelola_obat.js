@@ -32,8 +32,10 @@ document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("nama").value = row.children[1].textContent;
       document.getElementById("kategori").value = row.children[2].textContent;
       document.getElementById("stok_awal").value = row.children[3].textContent;
-      document.getElementById("stok_minimum").value = row.children[4].textContent;
-      document.getElementById("tgl_kadaluarsa").value = row.children[5].textContent;
+      document.getElementById("stok_minimum").value =
+        row.children[4].textContent;
+      document.getElementById("tgl_kadaluarsa").value =
+        row.children[5].textContent;
 
       modal.classList.add("active");
     });

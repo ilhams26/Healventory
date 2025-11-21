@@ -1,4 +1,4 @@
-<?php
+<?php 
 session_start();
 if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'admin') {
     header("Location: login.php");
@@ -51,24 +51,29 @@ $obat = $pdo->query("SELECT * FROM obat ORDER BY id DESC");
                 </thead>
                 <tbody>
                     <?php while ($row = $obat->fetch()): ?>
-                    <tr data-id="<?= $row['id'] ?>">
-                        <td><?= htmlspecialchars($row['kode_obat']) ?></td>
-                        <td><?= htmlspecialchars($row['nama']) ?></td>
-                        <td><?= htmlspecialchars($row['kategori']) ?></td>
-                        <td><?= htmlspecialchars($row['stok_awal']) ?></td>
-                        <td><?= htmlspecialchars($row['stok_minimum']) ?></td>
-                        <td><?= htmlspecialchars($row['tgl_kadaluarsa']) ?></td>
-                        <td>
-                            <button class="btn-outline btn-edit">✏️</button>
-                            <button class="btn-primary btn-delete">🗑️</button>
-                        </td>
-                    </tr>
+                        <tr data-id="<?= $row['id'] ?>">
+                            <td><?= htmlspecialchars($row['kode_obat']) ?></td>
+                            <td><?= htmlspecialchars($row['nama']) ?></td>
+                            <td><?= htmlspecialchars($row['kategori']) ?></td>
+                            <td><?= htmlspecialchars($row['stok_awal']) ?></td>
+                            <td><?= htmlspecialchars($row['stok_minimum']) ?></td>
+                            <td><?= htmlspecialchars($row['tgl_kadaluarsa']) ?></td>
+                            <td>
+                                <button class="btn-outline btn-edit">✏️</button>
+                                <button class="btn-primary btn-delete">🗑️</button>
+                            </td>
+                        </tr>
                     <?php endwhile; ?>
                 </tbody>
             </table>
         </section>
     </main>
 </div>
+
+
+<!-- ========================= -->
+<!--    MODALS DITARUH DI LUAR -->
+<!-- ========================= -->
 
 <!-- Modal Form -->
 <div class="modal" id="modalForm">
@@ -115,4 +120,5 @@ $obat = $pdo->query("SELECT * FROM obat ORDER BY id DESC");
 </div>
 
 <script src="../assets/js/kelola_obat.js"></script>
-<?php include '../includes/footer_notif.php'; ?>
+
+
