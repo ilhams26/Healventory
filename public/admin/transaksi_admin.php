@@ -36,10 +36,10 @@ include '../includes/header.php';
         <ul class="menu">
             <li onclick="location.href='dashboard.php'"><i class="bi bi-house-fill"></i> Dashboard</li>
             <li onclick="location.href='kelola_obat.php'"><i class="bi bi-capsule"></i> Kelola Obat</li>
-            <li onclick="location.href='kelola_user.php'"><i class="bi bi-person'></i> Kelola User</li>
-            <li class=" active"><i class="bi bi-arrow-left-right"></i> Transaksi</li>
-            <li><i class="bi bi-file-earmark-text"></i> Laporan</li>
-            <li><i class="bi bi-activity"></i> Monitoring</li>
+            <li onclick="location.href='kelola_user.php'"><i class="bi bi-person"></i> Kelola User</li>
+            <li class="active" onclick="location.href='transaksi_admin.php'"><i class="bi bi-arrow-left-right"></i> Transaksi</li>
+            <li onclick="location.href='laporan.php'"><i class="bi bi-file-earmark-text"></i> Laporan</li>
+            <li onclick="location.href='monitoring.php'"><i class="bi bi-activity"></i> Monitoring</li>
             <li id="btnLogout"><i class="bi bi-box-arrow-left"></i> Logout</li>
         </ul>
     </aside>
@@ -89,6 +89,16 @@ include '../includes/header.php';
             </table>
         </section>
     </main>
+</div>
+
+<div class="logout-modal" id="logoutModal">
+    <div class="logout-box">
+        <p>Yakin Ingin Keluar?</p>
+        <div class="logout-actions">
+            <button id="confirmLogout" class="btn-outline">Ya</button>
+            <button id="cancelLogout" class="btn-primary">Batal</button>
+        </div>
+    </div>
 </div>
 
 <?php include '../includes/footer.php'; ?>
