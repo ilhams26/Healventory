@@ -22,12 +22,12 @@ $notif = $pdo->query("SELECT pesan FROM notifikasi ORDER BY tanggal DESC LIMIT 5
     <aside class="sidebar">
         <h2 class="logo">Healventory</h2>
         <ul class="menu">
-            <li class="active" id="menuDashboard"><i class="bi bi-house-fill"></i> Dashboard</li>
-            <li id="menuKelolaObat"><i class="bi bi-capsule"></i> Kelola Obat</li>
-            <li id="menuKelolaUser"><i class="bi bi-person"></i> Kelola User</li>
-            <li><i class="bi bi-arrow-left-right"></i> Transaksi</li>
-            <li><i class="bi bi-file-earmark-text"></i> Laporan</li>
-            <li><i class="bi bi-activity"></i> Monitoring</li>
+            <li onclick="location.href='dashboard.php'" class="active"><i class="bi bi-house-fill"></i> Dashboard</li>
+            <li onclick="location.href='kelola_obat.php'"><i class="bi bi-capsule"></i> Kelola Obat</li>
+            <li onclick="location.href='kelola_user.php'"><i class="bi bi-person"></i> Kelola User</li>
+            <li onclick="location.href='transaksi_admin.php'"><i class="bi bi-arrow-left-right"></i> Transaksi</li>
+            <li onclick="location.href='laporan.php'"><i class="bi bi-file-earmark-text"></i> Laporan</li>
+            <li onclick="location.href='monitoring.php'"><i class="bi bi-activity"></i> Monitoring</li>
             <li id="btnLogout"><i class="bi bi-box-arrow-left"></i> Logout</li>
         </ul>
     </aside>
@@ -68,7 +68,7 @@ $notif = $pdo->query("SELECT pesan FROM notifikasi ORDER BY tanggal DESC LIMIT 5
             <div class="notif">
                 <h4>Notifikasi Terbaru</h4>
                 <ul>
-                    <?php while($n = $notif->fetch()): ?>
+                    <?php while ($n = $notif->fetch()): ?>
                         <li><?= htmlspecialchars($n['pesan']) ?></li>
                     <?php endwhile; ?>
                 </ul>
@@ -96,7 +96,7 @@ $notif = $pdo->query("SELECT pesan FROM notifikasi ORDER BY tanggal DESC LIMIT 5
                         ORDER BY t.tgl_transaksi DESC LIMIT 5
                     ");
                     while ($row = $transaksi->fetch()):
-                    ?>
+                        ?>
                         <tr>
                             <td><?= htmlspecialchars(date('Y-m-d', strtotime($row['tgl_transaksi']))) ?></td>
                             <td><?= htmlspecialchars($row['nama_obat']) ?></td>
@@ -127,42 +127,42 @@ $notif = $pdo->query("SELECT pesan FROM notifikasi ORDER BY tanggal DESC LIMIT 5
 <?php include '../includes/footer.php'; ?>
 
 <script>
-// --- Navigasi Sidebar ---
-document.getElementById("menuKelolaObat").addEventListener("click", () => {
-    window.location.href = "kelola_obat.php";
-});
-
-// --- Logout Modal ---
-const btnLogout = document.getElementById("btnLogout");
-const modal = document.getElementById("logoutModal");
-const confirmBtn = document.getElementById("confirmLogout");
-const cancelBtn = document.getElementById("cancelLogout");
-
-btnLogout.addEventListener("click", () => modal.classList.add("active"));
-cancelBtn.addEventListener("click", () => modal.classList.remove("active"));
-confirmBtn.addEventListener("click", () => (window.location.href = "../logout.php"));
-
-// --- Popup Notifikasi Otomatis ---
-setInterval(() => {
-fetch("get_notif.php")
-    .then(res => res.json())
-    .then(data => {
-    if (data.new) {
-        showPopupNotif(data.pesan);
-    }
+    // --- Navigasi Sidebar ---
+    document.getElementById("menuKelolaObat").addEventListener("click", () => {
+        window.location.href = "kelola_obat.php";
     });
-}, 10000); // tiap 10 detik
 
-function showPopupNotif(pesan) {
-const popup = document.createElement("div");
-popup.className = "popup-notif";
-popup.innerHTML = `<p>${pesan}</p>`;
-document.getElementById("popupContainer").appendChild(popup);
+    // --- Logout Modal ---
+    const btnLogout = document.getElementById("btnLogout");
+    const modal = document.getElementById("logoutModal");
+    const confirmBtn = document.getElementById("confirmLogout");
+    const cancelBtn = document.getElementById("cancelLogout");
 
-setTimeout(() => popup.classList.add("show"), 100);
-setTimeout(() => {
-    popup.classList.remove("show");
-    setTimeout(() => popup.remove(), 500);
-}, 6000);
-}
+    btnLogout.addEventListener("click", () => modal.classList.add("active"));
+    cancelBtn.addEventListener("click", () => modal.classList.remove("active"));
+    confirmBtn.addEventListener("click", () => (window.location.href = "../logout.php"));
+
+    // --- Popup Notifikasi Otomatis ---
+    setInterval(() => {
+        fetch("get_notif.php")
+            .then(res => res.json())
+            .then(data => {
+                if (data.new) {
+                    showPopupNotif(data.pesan);
+                }
+            });
+    }, 10000); // tiap 10 detik
+
+    function showPopupNotif(pesan) {
+        const popup = document.createElement("div");
+        popup.className = "popup-notif";
+        popup.innerHTML = `<p>${pesan}</p>`;
+        document.getElementById("popupContainer").appendChild(popup);
+
+        setTimeout(() => popup.classList.add("show"), 100);
+        setTimeout(() => {
+            popup.classList.remove("show");
+            setTimeout(() => popup.remove(), 500);
+        }, 6000);
+    }
 </script>

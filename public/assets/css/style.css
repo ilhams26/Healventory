@@ -150,6 +150,10 @@ body {
   padding: 20px;
 }
 
+.main-content h2 {
+  padding-bottom: 10px;
+}
+
 .header {
   display: flex;
   justify-content: flex-end;
@@ -421,3 +425,33 @@ body {
 
 .btn-edit:hover { color: #0d47a1; }
 .btn-delete:hover { color: red; }
+
+/*Laporan*/
+.container-laporan {
+  display: flex;
+  height: 100vh;
+  width: 100;
+  background: var(--background);
+}
+
+.btn-print {
+  margin-top: 25px;
+  padding: 12px 20px;
+  background: var(--primary);
+  color: var(--white);
+  border: none;
+  border-radius: 10px;
+  font-size: 17px;
+  cursor: pointer;
+  float: right;
+  display: flex;
+  align-items: center;
+}
+
+.btn-print i {
+  margin-right: 8px;
+}
+
+.btn-print:hover {
+  background: var(--primary-hover);
+}
