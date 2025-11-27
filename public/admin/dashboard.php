@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'admin') {
+if (!isset($_SESSION['user_role'])) {
     header("Location: login.php");
     exit;
 }
@@ -21,15 +21,16 @@ $notif = $pdo->query("SELECT pesan FROM notifikasi ORDER BY tanggal DESC LIMIT 5
 <div class="container">
     <aside class="sidebar">
         <h2 class="logo">Healventory</h2>
-        <ul class="menu">
-            <li class="active" id="menuDashboard"><i class="bi bi-house-fill"></i> Dashboard</li>
-            <li id="menuKelolaObat"><i class="bi bi-capsule"></i> Kelola Obat</li>
-            <li id="menuKelolaUser"><i class="bi bi-person"></i> Kelola User</li>
-            <li><i class="bi bi-arrow-left-right"></i> Transaksi</li>
-            <li><i class="bi bi-file-earmark-text"></i> Laporan</li>
-            <li><i class="bi bi-activity"></i> Monitoring</li>
-            <li id="btnLogout"><i class="bi bi-box-arrow-left"></i> Logout</li>
-        </ul>
+       <ul class="menu">
+    <li id="menuDashboard" class="active"><i class="bi bi-house-fill"></i> Dashboard</li>
+    <li id="menuObat"><i class="bi bi-capsule"></i> Kelola Obat</li>
+    <li id="menuUser"><i class="bi bi-person"></i> Kelola User</li>
+    <li id="menuTransaksi"><i class="bi bi-arrow-left-right"></i> Transaksi</li>
+    <li id="menuLaporan"><i class="bi bi-file-earmark-text"></i> Laporan</li>
+    <li id="menuMonitoring"><i class="bi bi-activity"></i> Monitoring</li>
+    <li id="btnLogout"><i class="bi bi-box-arrow-left"></i> Logout</li>
+</ul>
+
     </aside>
 
     <main class="main-content">

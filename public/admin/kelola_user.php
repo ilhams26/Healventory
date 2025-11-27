@@ -20,6 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
 
         $stmt = $pdo->prepare("INSERT INTO users (fullname, role, username, password) VALUES (?, ?, ?, ?)");
         $stmt->execute([$fullname, $role, $username, $password]);
+
         echo json_encode(['status' => 'success', 'msg' => 'Pengguna berhasil ditambahkan']);
         exit;
     }
@@ -40,6 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
             $stmt = $pdo->prepare("UPDATE users SET fullname=?, role=?, username=? WHERE id=?");
             $stmt->execute([$fullname, $role, $username, $id]);
         }
+
         echo json_encode(['status' => 'success', 'msg' => 'Pengguna berhasil diperbarui']);
         exit;
     }
@@ -49,28 +51,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
         $id = $_POST['id'];
         $stmt = $pdo->prepare("DELETE FROM users WHERE id=?");
         $stmt->execute([$id]);
+
         echo json_encode(['status' => 'success', 'msg' => 'Pengguna dihapus']);
         exit;
     }
 }
 
-// 🧩 BAGIAN TAMPILAN
-include '../includes/header.php';
+// 🧩 QUERY TAMPILAN (PERBAIKAN — menggunakan tabel users)
 $users = $pdo->query("SELECT * FROM users ORDER BY id DESC");
+
+include '../includes/header.php';
 ?>
 
 <div class="container">
     <aside class="sidebar">
         <h2 class="logo">Healventory</h2>
-        <ul class="menu">
-            <li><i class="bi bi-house-fill"></i> Dashboard</li>
-            <li><i class="bi bi-capsule"></i> Kelola Obat</li>
-            <li class="active"><i class="bi bi-person"></i> Kelola User</li>
-            <li><i class="bi bi-arrow-left-right"></i> Transaksi</li>
-            <li><i class="bi bi-file-earmark-text"></i> Laporan</li>
-            <li><i class="bi bi-activity"></i> Monitoring</li>
-            <li id="btnLogout"><i class="bi bi-box-arrow-left"></i> Logout</li>
-        </ul>
+       <ul class="menu">
+    <li id="menuDashboard"><i class="bi bi-house-fill"></i> Dashboard</li>
+    <li id="menuObat"><i class="bi bi-capsule"></i> Kelola Obat</li>
+    <li id="menuUser"class="active"><i class="bi bi-person"></i> Kelola User</li>
+    <li id="menuTransaksi"><i class="bi bi-arrow-left-right"></i> Transaksi</li>
+    <li id="menuLaporan"><i class="bi bi-file-earmark-text"></i> Laporan</li>
+    <li id="menuMonitoring"><i class="bi bi-activity"></i> Monitoring</li>
+    <li id="btnLogout"><i class="bi bi-box-arrow-left"></i> Logout</li>
+</ul>
+
     </aside>
 
     <main class="main-content">
@@ -80,7 +85,7 @@ $users = $pdo->query("SELECT * FROM users ORDER BY id DESC");
         </header>
 
         <section class="table-section">
-            <div class="table-header">
+            <div class="table-header" style="display: flex; justify-content: space-between; align-items:center;">
                 <h2>Kelola User</h2>
                 <button class="btn-primary" id="btnTambahUser">+ Tambah Pengguna</button>
             </div>
@@ -88,7 +93,6 @@ $users = $pdo->query("SELECT * FROM users ORDER BY id DESC");
             <table>
                 <thead>
                     <tr>
-                        <!-- ID tidak ditampilkan di tabel -->
                         <th>Nama Lengkap</th>
                         <th>Peran</th>
                         <th>Username</th>
@@ -96,11 +100,11 @@ $users = $pdo->query("SELECT * FROM users ORDER BY id DESC");
                         <th>Aksi</th>
                     </tr>
                 </thead>
+
                 <tbody>
-                    <?php while($row = $users->fetch()): ?>
+                    <?php while ($row = $users->fetch()): ?>
                         <tr>
-                            <!-- ID disembunyikan tapi tetap digunakan -->
-                            <td hidden><?= htmlspecialchars($row['id']) ?></td>
+                            <td hidden><?= $row['id'] ?></td>
                             <td><?= htmlspecialchars($row['fullname']) ?></td>
                             <td><?= htmlspecialchars($row['role']) ?></td>
                             <td><?= htmlspecialchars($row['username']) ?></td>
@@ -113,6 +117,7 @@ $users = $pdo->query("SELECT * FROM users ORDER BY id DESC");
                                     data-username="<?= htmlspecialchars($row['username']) ?>">
                                     ✏️
                                 </button>
+
                                 <button class="btn-delete" data-id="<?= $row['id'] ?>">🗑️</button>
                             </td>
                         </tr>
@@ -123,35 +128,36 @@ $users = $pdo->query("SELECT * FROM users ORDER BY id DESC");
     </main>
 </div>
 
-<!-- MODAL POPUP -->
+<!-- MODAL -->
 <div class="modal-blur" id="userModal">
-  <div class="modal-content">
-    <h3 id="modalTitle">Tambah Pengguna</h3>
-    <form id="userForm">
-        <input type="hidden" name="id" id="id">
-        <input type="hidden" name="action" id="action" value="tambah">
+    <div class="modal-content">
+        <h3 id="modalTitle">Tambah Pengguna</h3>
 
-        <label>Nama Lengkap</label>
-        <input type="text" name="fullname" id="fullname" required>
+        <form id="userForm">
+            <input type="hidden" name="id" id="id">
+            <input type="hidden" name="action" id="action" value="tambah">
 
-        <label>Peran</label>
-        <select name="role" id="role" required>
-            <option value="admin">Admin</option>
-            <option value="staff">Staff</option>
-        </select>
+            <label>Nama Lengkap</label>
+            <input type="text" name="fullname" id="fullname" required>
 
-        <label>Username</label>
-        <input type="text" name="username" id="username" required>
+            <label>Peran</label>
+            <select name="role" id="role" required>
+                <option value="admin">Admin</option>
+                <option value="staff">Staff</option>
+            </select>
 
-        <label>Password</label>
-        <input type="password" name="password" id="password">
+            <label>Username</label>
+            <input type="text" name="username" id="username" required>
 
-        <div class="form-actions">
-            <button type="submit" class="btn-primary">Simpan</button>
-            <button type="button" class="btn-outline" id="closeModal">Batal</button>
-        </div>
-    </form>
-  </div>
+            <label>Password</label>
+            <input type="password" name="password" id="password">
+
+            <div class="form-actions">
+                <button type="submit" class="btn-primary">Simpan</button>
+                <button type="button" class="btn-outline" id="closeModal">Batal</button>
+            </div>
+        </form>
+    </div>
 </div>
 
 <?php include '../includes/footer.php'; ?>

@@ -15,14 +15,15 @@ $obat = $pdo->query("SELECT * FROM obat ORDER BY id DESC");
     <aside class="sidebar">
         <h2 class="logo">Healventory</h2>
         <ul class="menu">
-            <li id="menuDashboard"><i class="bi bi-house-fill"></i> Dashboard</li>
-            <li class="active" id="menuObat"><i class="bi bi-capsule"></i> Kelola Obat</li>
-            <li><i class="bi bi-person"></i> Kelola User</li>
-            <li><i class="bi bi-arrow-left-right"></i> Transaksi</li>
-            <li><i class="bi bi-file-earmark-text"></i> Laporan</li>
-            <li><i class="bi bi-activity"></i> Monitoring</li>
-            <li id="btnLogout"><i class="bi bi-box-arrow-left"></i> Logout</li>
-        </ul>
+    <li id="menuDashboard"><i class="bi bi-house-fill"></i> Dashboard</li>
+    <li id="menuObat"class="active"><i class="bi bi-capsule"></i> Kelola Obat</li>
+    <li id="menuUser"><i class="bi bi-person"></i> Kelola User</li>
+    <li id="menuTransaksi"><i class="bi bi-arrow-left-right"></i> Transaksi</li>
+    <li id="menuLaporan"><i class="bi bi-file-earmark-text"></i> Laporan</li>
+    <li id="menuMonitoring"><i class="bi bi-activity"></i> Monitoring</li>
+    <li id="btnLogout"><i class="bi bi-box-arrow-left"></i> Logout</li>
+</ul>
+
     </aside>
 
     <main class="main-content">
